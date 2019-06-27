@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/syyyym/PhotoAlbum_AWS/issues"
   },
-  "homepage": "https://github.com/syyyym/PhotoAlbum_AWS#readme"
+  "homepage": "https://github.com/syyyym/PhotoAlbum_AWS#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
