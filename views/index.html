@@ -3,17 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Photo Album</title>
-	<link rel="stylesheet" href="../public/css/main.css">
+	<link rel="stylesheet" href="../css/main.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="../public/js/photogrid_utils.js"></script>
-	<script type="text/javascript">
-	
+	<script src="../js/photogrid_utils.js"></script>
+	<!--script type="text/javascript">	
 	$(function(){
 		showStatus("Hello Photo Album!!!", 3000);
 	})
-
-	</script>
-
+	</script-->
 </head>
 <body>
 	<div class="container">
@@ -25,7 +22,7 @@
 				<input type="file" name="uploadPic" class="uploadPic">
 				<button id="doUpload">Upload</button>
 				<div class="progressBarDiv">
-					<div class="progress" style="width:45%"></div>
+					<div class="progress"></div>
 				</div>
 				<h5 class="status"></h5>
 			</div>
@@ -37,13 +34,13 @@
 					<div class="overlay">
 					<div class="voteCtrl">
 						<a href="#" class="voteUp">
-							<img src="../public/images/voteup.png" alt="Click Here to Vote Up !">
+							<img src="../images/voteup.png" alt="Click Here to Vote Up !">
 							<h4>100</h4>
 						</a>
 					</div>
 					</div>
 					<div class="imageHolder">
-						<img src="../public/images/someimage.jpg" alt="">
+						<img src="../images/someimage.jpg" alt="">
 					</div>
 				</li>
 				<!-- End Repeat -->
