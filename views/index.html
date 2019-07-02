@@ -6,11 +6,40 @@
 	<link rel="stylesheet" href="../css/main.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="../js/photogrid_utils.js"></script>
-	<!--script type="text/javascript">	
+
+	<script>
 	$(function(){
-		showStatus("Hello Photo Album!!!", 3000);
+		var host = '{{host}}';
+		$(document).on('click', '#doUpload', function(){
+			uploadNow();
+		})
+		function uploadNow(){
+			$('.progress').fadeIn(100);			
+			var uploadURL = host + '/upload'; 
+			var uploadFile = $('.uploadPic'); 			
+			if(uploadFile.val()!=''){ 				
+				var form = new FormData();
+				form.append("upload", uploadFile[0].files[0]); 				
+				// Perform the AJAX POST request and send the file -
+				ajax({ 
+					method:'post',
+					url: uploadURL,
+					success:function(){ 
+						$('.progress').fadeOut(200); 
+						uploadFile.val('');
+					},
+					progress: function(e){ 
+						if(e.lengthComputable){
+							var perc = Math.round((e.loaded * 100) / e.total);
+							$('.progress').css('width', (perc + '%')); 
+						}
+					},
+					payload:form 
+				})
+			}
+		}
 	})
-	</script-->
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -21,8 +50,9 @@
 			<div class="controls">
 				<input type="file" name="uploadPic" class="uploadPic">
 				<button id="doUpload">Upload</button>
-				<div class="progressBarDiv">
-					<div class="progress"></div>
+				<div class="progressBarDiv">					
+					<div class="progress"></div> 
+					<!--div class="progress" style="width:45%"></div-->
 				</div>
 				<h5 class="status"></h5>
 			</div>
