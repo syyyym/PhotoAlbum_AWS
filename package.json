@@ -18,6 +18,7 @@
   "homepage": "https://github.com/syyyym/PhotoAlbum_AWS#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "formidable": "^1.2.1",
     "hogan-express": "^0.5.2",
     "socket.io": "^2.3.0"
   }
