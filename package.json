@@ -21,6 +21,7 @@
     "formidable": "^1.2.1",
     "gm": "^1.23.1",
     "hogan-express": "^0.5.2",
+    "mongoose": "^5.7.8",
     "socket.io": "^2.3.0"
   }
 }
