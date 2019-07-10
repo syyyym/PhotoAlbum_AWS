@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="../css/main.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="../js/photogrid_utils.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 
 	<script>
 	$(function(){
@@ -13,6 +14,9 @@
 		$(document).on('click', '#doUpload', function(){
 			uploadNow();
 		})
+
+		var socket = io(host);
+
 		function uploadNow(){
 			$('.progress').fadeIn(100);			
 			var uploadURL = host + '/upload'; 

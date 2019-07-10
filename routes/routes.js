@@ -1,4 +1,14 @@
 module.exports = function(express, app, formidable, fs, os, gm) {
+    var Socket;  
+    io.on('connection', function(socket){
+        Socket = socket;
+    })
+    var singleImage = new mongoose.Schema({
+        filename:String,
+        votes:Number
+    })
+    var singleImageModel = mongoose.model('singleImage', singleImage);
+
     var router = express.Router();
 
     router.get('/', function(req, res, next){
@@ -32,7 +42,7 @@ module.exports = function(express, app, formidable, fs, os, gm) {
             fs.rename(tmpFile, nfile, function(){
                 // Resize the image and upload this file into the S3 bucket
 				gm(nfile).resize(300).write(nfile, function(){ //callback function 
-					// Upload to the S3 Bucket
+                    // Upload to the S3 Bucket                    
 				})
             })
         })
