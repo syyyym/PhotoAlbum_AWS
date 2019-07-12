@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/syyyym/PhotoAlbum_AWS#readme",
   "dependencies": {
+    "aws-sdk": "^2.564.0",
     "express": "^4.17.1",
     "formidable": "^1.2.1",
     "gm": "^1.23.1",
