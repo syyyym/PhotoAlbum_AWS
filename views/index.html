@@ -16,7 +16,13 @@
 		})
 
 		var socket = io(host);
-
+		socket.on('status', function(data){ 
+			showStatus(data.msg, data.delay); 
+		})
+		socket.on('doUpdate', function(){
+			renderList();
+		})	
+		
 		function uploadNow(){
 			$('.progress').fadeIn(100);			
 			var uploadURL = host + '/upload'; 
