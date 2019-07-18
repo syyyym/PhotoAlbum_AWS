@@ -84,5 +84,12 @@ module.exports = function(express, app, formidable, fs, os, gm, s3, mongoose, io
             })
         })
     });
+
+    router.get('/getimages', function(req, res, next){
+        singleImageModel.find({}, function(err, result){
+            res.send(JSON.stringify(result)); 
+        })
+    })
+    
     app.use('/', router);
 }
