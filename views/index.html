@@ -21,8 +21,34 @@
 		})
 		socket.on('doUpdate', function(){
 			renderList();
-		})	
-		
+		})
+		function renderList(){
+			$('.gallery ul').html(''); 
+			ajax({
+				url: host + '/getimages',
+				success:function(data){ 
+					var imageList = JSON.parse(data.response);
+					for(var i = 0; i < imageList.length; i++){
+						var str = '<li>';
+						str += '<div class="overlay">';
+						str += '<div class="voteCtrl">';
+						str += '<a href="#" data-photoid="' + imageList[i]._id + '" class="voteUp">';
+						str += '<img src="../images/voteup.png" alt="Click Here to Vote Up !">';
+						str += '<h4>' + imageList[i].votes + '</h4>';
+						str += '</a>';
+						str += '</div>';
+						str += '</div>';
+						str += '<div class="imageHolder">';
+						str += '<img src="https://s3.us-east-2.amazonaws.com/photogridsym1/' + imageList[i].filename + '" alt="">'; 
+						str += '</div>';
+						str += '</li>';
+						$('.gallery ul').append(str); 
+					}
+				}
+			})
+		}
+		renderList();		
+
 		function uploadNow(){
 			$('.progress').fadeIn(100);			
 			var uploadURL = host + '/upload'; 
@@ -70,7 +96,7 @@
 		<div class="gallery">
 			<ul>
 				<!-- Repeat the following <li> structure for every image -->
-				<li>
+				<!--li>
 					<div class="overlay">
 					<div class="voteCtrl">
 						<a href="#" class="voteUp">
@@ -82,7 +108,7 @@
 					<div class="imageHolder">
 						<img src="../images/someimage.jpg" alt="">
 					</div>
-				</li>
+				</li -->
 				<!-- End Repeat -->
 
 
