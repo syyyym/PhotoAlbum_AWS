@@ -85,11 +85,17 @@ module.exports = function(express, app, formidable, fs, os, gm, s3, mongoose, io
         })
     });
 
-    router.get('/getimages', function(req, res, next){
-        singleImageModel.find({}, function(err, result){
-            res.send(JSON.stringify(result)); 
-        })
+router.get('/getimages', function(req, res, next){
+    singleImageModel.find({}, null, {sort:{votes:-1}}, function(err, result){ 
+        res.send(JSON.stringify(result)); 
     })
+})
+
+router.get('/voteup/:id', function(req, res, next){
+	singleImageModel.findByIdAndUpdate(req.params.id, {$inc:{votes:1}}, function(err, result){ 
+        res.status(200).send( {votes:result.votes});
+	})
+})
     
     app.use('/', router);
 }

@@ -8,6 +8,8 @@ gm = require('gm'),
 mongoose = require('mongoose'),
 AWS = require('aws-sdk')
 
+mongoose.set('useFindAndModify', false);    
+
 mongoose.connect(config.dbURI, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', error => logger.log('Database connection error', error));
